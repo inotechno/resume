@@ -7,6 +7,7 @@ services:
     image: resume
     container_name: resume
     restart: unless-stopped
+    command: /bin/bash -c "/var/www/html/import-db.sh && php-fpm"
     tty: true
     environment:
       SERVICE_NAME: app

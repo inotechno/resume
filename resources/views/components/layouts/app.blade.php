@@ -27,7 +27,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/gradient.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/new-skin/new-skin.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/demos/demo-1-colors.css') }}" />
     <link rel="shortcut icon" href="{{ asset('images/favicons/favicon.ico') }}">
 
 	@stack('styles')
@@ -47,7 +46,7 @@
 	<script src="https://use.fontawesome.com/8da76d029b.js"></script>
 
 	<script src="{{asset('js/scripts.js') }}"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+	{{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> --}}
 	@stack('scripts')
 </body>
 

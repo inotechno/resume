@@ -28,7 +28,7 @@ class PersonalInfoResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('key')->required()->readOnly(),
-                Forms\Components\Textarea::make('value')->required(),
+                Forms\Components\Textarea::make('value')->required()->columnSpanFull(),
             ]);
     }
 

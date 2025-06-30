@@ -14,23 +14,16 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Web Development',
-                'slug' => 'web-development',
+                'name' => 'Web Apps',
+                'slug' => 'web-apps',
                 'description' => 'Kategori Web Development',
                 'icon_url' => 'https://i.ibb.co/1T11111/rahmat.jpg',
                 'color' => '#fca61f'
             ],
             [
-                'name' => 'Mobile Development',
-                'slug' => 'mobile-development',
-                'description' => 'Kategori Mobile Development',
-                'icon_url' => 'https://i.ibb.co/1T11111/rahmat.jpg',
-                'color' => '#fca61f'
-            ],
-            [
-                'name' => 'Desktop Development',
-                'slug' => 'desktop-development',
-                'description' => 'Kategori Desktop Development',
+                'name' => 'Graphic Design',
+                'slug' => 'graphic-design',
+                'description' => 'Kategori Graphic Design',
                 'icon_url' => 'https://i.ibb.co/1T11111/rahmat.jpg',
                 'color' => '#fca61f'
             ],

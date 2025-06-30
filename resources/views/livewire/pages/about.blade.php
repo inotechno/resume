@@ -5,13 +5,13 @@
 
         @livewire('content.service')
 
-        @livewire('content.pricing')
+        {{-- @livewire('content.pricing')
 
         @livewire('content.fact')
 
         @livewire('content.client')
 
-        @livewire('content.quote')
+        @livewire('content.quote') --}}
 
     </div>
 </div>

@@ -3,19 +3,25 @@
 
         <div class="content contacts">
 
-            <!-- title -->
             <div class="title">Get in Touch</div>
 
-            <!-- content -->
             <div class="row">
                 <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
-                    <div class="map" id="map"></div>
+                    @livewire('elements.map-frame', ['style' => 'margin-bottom: 20px;'])
                     <div class="info-list">
                         <ul>
-                            <li><strong>Address . . . . .</strong> California, USA</li>
-                            <li><strong>Email . . . . .</strong> adlard@example.com</li>
-                            <li><strong>Phone . . . . .</strong> +123 654 78900</li>
-                            <li><strong>Freelance . . . . .</strong> Available</li>
+                            <li>
+                                @livewire('elements.text', ['value' => 'Address . . . . .', 'strong' => true]) @livewire('elements.text', ['value' => $address, 'style' => 'font-size:15px;'])
+                            </li>
+                            <li>
+                                @livewire('elements.text', ['value' => 'Email . . . . .', 'strong' => true]) @livewire('elements.text', ['value' => $email, 'style' => 'font-size:15px;'])
+                            </li>
+                            <li>
+                                @livewire('elements.text', ['value' => 'Phone . . . . .', 'strong' => true]) @livewire('elements.text', ['value' => $phone, 'style' => 'font-size:15px;'])
+                            </li>
+                            <li>
+                                @livewire('elements.text', ['value' => 'Whatsapp . . . . .', 'strong' => true]) @livewire('elements.link', ['value' => '6289676490971', 'href' => $whatsapp, 'target' => '_blank', 'style' => 'font-size:15px;'])
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -24,52 +30,7 @@
 
         </div>
 
-        <!--
-      Contact Form
-     -->
-        <div class="content contacts">
-
-            <!-- title -->
-            <div class="title">Contact Form</div>
-
-            <!-- content -->
-            <div class="row">
-                <div class="col col-d-12 col-t-12 col-m-12 border-line-v">
-                    <div class="contact_form">
-                        <form id="cform" method="post">
-                            <div class="row">
-                                <div class="col col-d-6 col-t-6 col-m-12">
-                                    <div class="group-val">
-                                        <input type="text" name="name" placeholder="Full Name" />
-                                    </div>
-                                </div>
-                                <div class="col col-d-6 col-t-6 col-m-12">
-                                    <div class="group-val">
-                                        <input type="text" name="email" placeholder="Email Address" />
-                                    </div>
-                                </div>
-                                <div class="col col-d-12 col-t-12 col-m-12">
-                                    <div class="group-val">
-                                        <textarea name="message" placeholder="Your Message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="align-left">
-                                <a href="#" class="button" onclick="$('#cform').submit(); return false;">
-                                    <span class="text">Send Message</span>
-                                    <span class="arrow"></span>
-                                </a>
-                            </div>
-                        </form>
-                        <div class="alert-success">
-                            <p>Thanks, your message is sent successfully.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-
-        </div>
+        @livewire('content.contact-form')
 
     </div>
 </div>

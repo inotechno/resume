@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
+    libicu-dev \
     locales \
     zip \
     jpegoptim optipng pngquant gifsicle \
@@ -18,13 +19,14 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpq-dev \
-    libonig-dev
+    libonig-dev \
+    postgresql-client
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install extensions
-RUN docker-php-ext-install pdo pdo_pgsql pgsql zip exif pcntl
+RUN docker-php-ext-install pdo pdo_pgsql pgsql zip exif pcntl mbstring intl
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
@@ -37,6 +39,10 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
 COPY . /var/www/html
+
+# Copy import-db.sh script
+COPY ./import-db.sh /var/www/html/import-db.sh
+RUN chmod +x /var/www/html/import-db.sh
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www/html

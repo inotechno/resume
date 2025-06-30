@@ -42,7 +42,7 @@
 
         @livewire('pages.work')
 
-        @livewire('pages.blog')
+        {{-- @livewire('pages.blog') --}}
 
         @livewire('pages.contact')
 
@@ -55,8 +55,7 @@
                 <section id="search-2" class="widget widget_search">
                     <label>
                         <span class="screen-reader-text">Search for:</span>
-                        <input type="search" class="search-field" placeholder="Search …" value=""
-                            name="s">
+                        <input type="search" class="search-field" placeholder="Search …" value="" name="s">
                     </label>
                     <input type="submit" class="search-submit" value="Search">
                 </section>
@@ -148,5 +147,14 @@
         </div>
         <span class="close"></span>
     </div>
+
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('css/demos/demo-' . $colorNumber . '-colors.css') }}" />
+
+        @if ($darkMode)
+            <link rel="stylesheet" href="{{ asset('css/template-dark/dark.css') }}" />
+        @endif
+
+    @endpush
 
 </div>
