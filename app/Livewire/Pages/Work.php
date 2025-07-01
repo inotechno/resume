@@ -15,7 +15,7 @@ class Work extends Component
     public function mount()
     {
         $this->categories = Category::all();
-        $this->projects = Project::with('category')->get();
+        $this->projects = Project::with('category')->orderBy('order')->get();
     }
 
     public function render()

@@ -136,7 +136,7 @@ class PersonalInfoSeeder extends Seeder
             [
                 "id" => "25",
                 "key" => "favicon",
-                "value" => "https://avatars.githubusercontent.com/u/151206616?s=400&u=131827919fe384485ea156c87098d3d02228a118&v=4",
+                "value" => "https://inotechno.my.id/images/logo.svg",
             ]
         ];
 
