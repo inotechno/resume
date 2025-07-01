@@ -20,6 +20,6 @@ class Home extends BaseComponent
     public function render()
     {
         // dd($this->personal);
-        return view('livewire.home')->title('Resume | ' . $this->personal['name'])->extends('layouts.app')->favicon($this->favicon);
+        return view('livewire.home')->title('Resume | ' . $this->personal['name']);
     }
 }
