@@ -41,8 +41,8 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY . /var/www/html
 
 # Copy import-db.sh script
-COPY ./import-db.sh /var/www/html/import-db.sh
-RUN chmod +x /var/www/html/import-db.sh
+# COPY ./import-db.sh /var/www/html/import-db.sh
+# RUN chmod +x /var/www/html/import-db.sh
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www/html
