@@ -132,6 +132,11 @@ class PersonalInfoSeeder extends Seeder
                 "id" => "24",
                 "key" => "email",
                 "value" => "2ahmadfatoni0@gmail.com",
+            ],
+            [
+                "id" => "25",
+                "key" => "favicon",
+                "value" => "https://avatars.githubusercontent.com/u/151206616?s=400&u=131827919fe384485ea156c87098d3d02228a118&v=4",
             ]
         ];
 

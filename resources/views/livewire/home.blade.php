@@ -155,6 +155,8 @@
             <link rel="stylesheet" href="{{ asset('css/template-dark/dark.css') }}" />
         @endif
 
+        <link rel="shortcut icon" href="{{ $favicon ?? asset('images/favicons/favicon.ico') }}">
+
     @endpush
 
 </div>

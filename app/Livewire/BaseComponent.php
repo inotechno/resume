@@ -11,5 +11,6 @@ class BaseComponent extends Component
     public function boot()
     {
         $this->personal = PersonalInfo::all()->pluck('value', 'key')->toArray();
+        // dd($this->personal);
     }
 }

@@ -27,7 +27,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/gradient.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/new-skin/new-skin.css') }}" />
-    <link rel="shortcut icon" href="{{ $favicon ?? asset('images/favicons/favicon.ico') }}">
 
 	@stack('styles')
 </head>
