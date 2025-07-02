@@ -89,8 +89,9 @@ class ProjectResource extends Resource
                     ->color('primary dark')
                     ->size('sm'),
 
-                Tables\Columns\TextInputColumn::make('order')->width('1%')->sortable()->rules(['numeric', 'min:0']),
+                Tables\Columns\TextInputColumn::make('order')->width('0.5%')->sortable()->rules(['numeric', 'min:0']),
             ])
+            ->defaultSort('order')
             ->filters([
                 Tables\Filters\SelectFilter::make('category')
                     ->relationship('category', 'name'),
