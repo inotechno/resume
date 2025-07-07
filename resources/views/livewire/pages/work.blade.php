@@ -32,8 +32,7 @@
                                 </a>
                             </div>
                             <div class="desc">
-                                <a href="#" class="name has-popup-media"
-                                    wire:click="$dispatch('showProject', { projectId: {{ $project->id }} })">{{ $project->title }}</a>
+                                <a href="{{ route('project.detail', $project->slug) }}" class="name">{{ $project->title }}</a>
                                 <div class="category">{{ $project->category->name }}</div>
                             </div>
                         </div>
