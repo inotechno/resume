@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Masoudi\Laravel\Visitors\Traits\InteractsWithVisitors;
 
 class Education extends Model
 {
+    use InteractsWithVisitors;
+
     protected $table = 'education';
 
     protected $fillable = [

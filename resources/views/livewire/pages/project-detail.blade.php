@@ -34,13 +34,13 @@
 
 
                             @if ($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank" class="button">
+                                <a href="{{ route('redirect', ['encode_url' => urlencode($project->project_url)]) }}" target="_blank" class="button">
                                     <span class="fa fa-globe"></span>
                                     <span class="text">View Project</span>
                                 </a>
                             @endif
                             @if ($project->github)
-                                <a href="{{ $project->github }}" target="_blank" class="button">
+                                <a href="{{ route('redirect', ['encode_url' => urlencode($project->github)]) }}" target="_blank" class="button">
                                     <span class="fa fa-github"></span>
                                     <span class="text">View Code</span>
                                 </a>

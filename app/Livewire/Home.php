@@ -19,6 +19,7 @@ class Home extends BaseComponent
 
     public function render()
     {
+        request()->visit();
         // dd($this->personal);
         return view('livewire.home', [
             'favicon' => $this->personal['favicon'],

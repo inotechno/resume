@@ -22,6 +22,7 @@ class ProjectDetail extends BaseComponent
     public function render()
     {
         $project = Project::with('category')->where('slug', $this->slug)->first();
+        $project->visit();
 
         $projects = Project::with('category')->where('slug', '!=', $this->slug)->get();
         $this->nextProject = $projects->where('order', '>', $project->order)->first();

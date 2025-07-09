@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Masoudi\Laravel\Visitors\Traits\InteractsWithVisitors;
 
 class Resume extends Model
 {
+    use InteractsWithVisitors;
+
     protected $fillable = [
         'file_name',
         'file_path'

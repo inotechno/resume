@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Project;
 use Livewire\Component;
 
 class ProjectDetail extends BaseComponent
@@ -21,6 +22,7 @@ class ProjectDetail extends BaseComponent
 
     public function render()
     {
+
         // dd($this->personal);
         return view('livewire.project-detail', [
             'favicon' => $this->personal['favicon'],
