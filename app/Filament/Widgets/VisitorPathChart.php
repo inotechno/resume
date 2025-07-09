@@ -9,6 +9,7 @@ class VisitorPathChart extends ChartWidget
 {
     protected static ?string $heading = 'Statistik Pengunjung per URL';
     protected int|string|array $columnSpan = 'full';
+    protected static ?string $maxHeight = '300px';
 
     protected function getData(): array
     {
