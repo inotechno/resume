@@ -36,7 +36,7 @@ Route::get('/sitemap.xml', function () {
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
     ]);
-})->middleware(DisableLivewireScripts::class)->name('sitemap');
+})->middleware('disable-livewire-scripts')->name('sitemap');
 
 Route::get('/sitemap-externals.xml', function () {
     $sitemap = Sitemap::create();
@@ -68,7 +68,7 @@ Route::get('/sitemap-externals.xml', function () {
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
     ]);
-})->middleware(DisableLivewireScripts::class)->name('sitemap.externals');
+})->middleware('disable-livewire-scripts')->name('sitemap.externals');
 
 // routes/web.php - perbaikan loading sitemap
 Route::get('/sitemap.xml', function () {
@@ -95,7 +95,7 @@ Route::get('/sitemap.xml', function () {
         'Content-Type' => 'application/xml; charset=utf-8',
         'X-Robots-Tag' => 'noindex',
     ]);
-})->middleware(DisableLivewireScripts::class)->name('sitemap');
+})->middleware('disable-livewire-scripts')->name('sitemap');
 
 // Jika ingin menggunakan sitemap index untuk multiple sitemaps
 Route::get('/sitemap-index.xml', function () {
@@ -107,4 +107,4 @@ Route::get('/sitemap-index.xml', function () {
     return response($sitemapIndex->render(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
     ]);
-})->middleware(DisableLivewireScripts::class)->name('sitemap.index');
+})->middleware('disable-livewire-scripts')->name('sitemap.index');
