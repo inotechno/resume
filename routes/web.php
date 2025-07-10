@@ -49,5 +49,7 @@ Route::get('/sitemap.xml', function () {
         }
     }
 
-    return $sitemap->toResponse(request());
+    return response($sitemap->render(), 200, [
+        'Content-Type' => 'application/xml',
+    ]);
 });
