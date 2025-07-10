@@ -41,7 +41,7 @@ Route::get('/sitemap.xml', function () {
         }
 
         // Link github_url (eksternal)
-        if ($project->github_url) {
+        if ($project->github) {
             $sitemap->add(
                 Url::create($project->github_url)
                     ->setLastModificationDate($project->updated_at ?? Carbon::now())
