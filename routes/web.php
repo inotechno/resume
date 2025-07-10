@@ -20,32 +20,34 @@ Route::get('/redirect/{encode_url}', function ($encode_url) {
 })->where('encode_url', '.*')->name('redirect');
 
 Route::get('/sitemap.xml', function () {
-    $sitemap = Sitemap::create()
-        ->add(Url::create(route('home'))->setLastModificationDate(Carbon::now()));
+    $sitemap = Sitemap::create();
+    $projects = Project::all();
 
+    $sitemap->add(Url::create(route('home')));
+
+    foreach ($projects as $project) {
+        $sitemap->add(
+            Url::create(route('project.detail', $project->slug))
+                ->setLastModificationDate($project->updated_at)
+        );
+    }
+
+    return response($sitemap->render(), 200, [
+        'Content-Type' => 'application/xml',
+    ]);
+});
+
+Route::get('/sitemap-externals.xml', function () {
+    $sitemap = Sitemap::create();
     $projects = Project::all();
 
     foreach ($projects as $project) {
-        // Link detail project (dari route)
-        $sitemap->add(
-            Url::create(route('project.detail', $project->slug))
-                ->setLastModificationDate($project->updated_at ?? Carbon::now())
-        );
-
-        // Link project_url (eksternal)
         if ($project->project_url) {
-            $sitemap->add(
-                Url::create($project->project_url)
-                    ->setLastModificationDate($project->updated_at ?? Carbon::now())
-            );
+            $sitemap->add(Url::create($project->project_url));
         }
 
-        // Link github_url (eksternal)
         if ($project->github) {
-            $sitemap->add(
-                Url::create($project->github)
-                    ->setLastModificationDate($project->updated_at ?? Carbon::now())
-            );
+            $sitemap->add(Url::create($project->github));
         }
     }
 
@@ -53,3 +55,4 @@ Route::get('/sitemap.xml', function () {
         'Content-Type' => 'application/xml',
     ]);
 });
+
