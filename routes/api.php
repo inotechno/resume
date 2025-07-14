@@ -39,7 +39,7 @@ Route::get('/sitemap.xml', function () {
     $dom = new DOMDocument();
     $dom->preserveWhiteSpace = false;
     $dom->formatOutput = true;
-    $dom->loadXML($xml);
+    $dom->loadXML($xmlContent);
 
     // Ambil elemen root <urlset>
     $urlset = $dom->getElementsByTagName('urlset')->item(0);
