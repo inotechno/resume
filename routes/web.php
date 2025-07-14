@@ -20,9 +20,5 @@ Route::get('/redirect/{encode_url}', function ($encode_url) {
     return redirect()->away($decode_url);
 })->where('encode_url', '.*')->name('redirect');
 
-if (request()->is('sitemap.xml')) {
-    require base_path('routes/sitemap.php');
-}
-
 
 
