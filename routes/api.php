@@ -18,7 +18,7 @@ Route::get('/sitemap.xml', function () {
     $sitemap->add(
         Url::create(route('home'))
             ->setLastModificationDate(Carbon::now())
-            ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+            // ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
             ->setPriority(1.0)
     );
 
@@ -27,7 +27,7 @@ Route::get('/sitemap.xml', function () {
         $sitemap->add(
             Url::create(route('project.detail', $project->slug))
                 ->setLastModificationDate($project->updated_at)
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                // ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                 ->setPriority(0.8)
         );
     }
@@ -73,7 +73,7 @@ Route::get('/sitemap-externals.xml', function () {
             $sitemap->add(
                 Url::create($project->project_url)
                     ->setLastModificationDate($project->updated_at)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                    // ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                     ->setPriority(0.5)
             );
         }
@@ -82,7 +82,7 @@ Route::get('/sitemap-externals.xml', function () {
             $sitemap->add(
                 Url::create($project->github)
                     ->setLastModificationDate($project->updated_at)
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+                    // ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
                     ->setPriority(0.3)
             );
         }
