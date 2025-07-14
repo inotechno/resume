@@ -93,7 +93,6 @@ Route::get('/sitemap.xml', function () {
 
     return response($sitemap->render(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
-        'X-Robots-Tag' => 'noindex',
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap');
 
