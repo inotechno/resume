@@ -35,6 +35,7 @@ Route::get('/sitemap.xml', function () {
     return response($xmlContent, 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
+        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap');
 
@@ -67,6 +68,7 @@ Route::get('/sitemap-externals.xml', function () {
     return response($xmlContent, 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
+        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap.externals');
 
@@ -93,6 +95,8 @@ Route::get('/sitemap.xml', function () {
 
     return response($sitemap->render(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
+        'Cache-Control' => 'public, max-age=3600',
+        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap');
 
@@ -105,5 +109,7 @@ Route::get('/sitemap-index.xml', function () {
 
     return response($sitemapIndex->render(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
+        'Cache-Control' => 'public, max-age=3600',
+        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap.index');
