@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://inotechno.my.id/sitemap.xml
+Sitemap: https://inotechno.my.id/sitemap-externals.xml
+Sitemap: https://inotechno.my.id/sitemap-index.xml
