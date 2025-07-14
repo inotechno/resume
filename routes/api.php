@@ -35,10 +35,32 @@ Route::get('/sitemap.xml', function () {
     // Render sitemap dengan header yang benar
     $xmlContent = $sitemap->render();
 
-    return response($xmlContent, 200, [
+    // Bersihkan namespace tambahan menggunakan DOMDocument
+    $dom = new DOMDocument();
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
+    $dom->loadXML($xml);
+
+    // Ambil elemen root <urlset>
+    $urlset = $dom->getElementsByTagName('urlset')->item(0);
+
+    // Simpan hanya default namespace
+    $urlset->removeAttributeNS('http://www.w3.org/1999/xhtml', 'xhtml');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-image/1.1', 'image');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-video/1.1', 'video');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-news/0.9', 'news');
+
+    // Hapus attribute xmlns selain yang utama
+    $urlset->removeAttribute('xmlns:xhtml');
+    $urlset->removeAttribute('xmlns:image');
+    $urlset->removeAttribute('xmlns:video');
+    $urlset->removeAttribute('xmlns:news');
+
+    // Kembalikan sebagai response
+    return response($dom->saveXML(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
-        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
+        'X-Robots-Tag' => 'index, follow',
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap');
 
@@ -68,51 +90,31 @@ Route::get('/sitemap-externals.xml', function () {
 
     $xmlContent = $sitemap->render();
 
-    return response($xmlContent, 200, [
+    // Bersihkan namespace tambahan menggunakan DOMDocument
+    $dom = new DOMDocument();
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
+    $dom->loadXML($xmlContent);
+
+    // Ambil elemen root <urlset>
+    $urlset = $dom->getElementsByTagName('urlset')->item(0);
+
+    // Simpan hanya default namespace
+    $urlset->removeAttributeNS('http://www.w3.org/1999/xhtml', 'xhtml');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-image/1.1', 'image');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-video/1.1', 'video');
+    $urlset->removeAttributeNS('http://www.google.com/schemas/sitemap-news/0.9', 'news');
+
+    // Hapus attribute xmlns selain yang utama
+    $urlset->removeAttribute('xmlns:xhtml');
+    $urlset->removeAttribute('xmlns:image');
+    $urlset->removeAttribute('xmlns:video');
+    $urlset->removeAttribute('xmlns:news');
+
+    // Kembalikan sebagai response
+    return response($dom->saveXML(), 200, [
         'Content-Type' => 'application/xml; charset=utf-8',
         'Cache-Control' => 'public, max-age=3600',
-        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
+        'X-Robots-Tag' => 'index, follow',
     ]);
 })->middleware('disable-livewire-scripts')->name('sitemap.externals');
-
-// routes/web.php - perbaikan loading sitemap
-Route::get('/sitemap.xml', function () {
-    $sitemap = Sitemap::create();
-    $projects = Project::all();
-
-    $sitemap->add(
-        Url::create(url('/'))
-            ->setLastModificationDate(Carbon::now())
-            ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-            ->setPriority(1.0)
-    );
-
-    foreach ($projects as $project) {
-        $sitemap->add(
-            Url::create(url('/project/' . $project->slug))
-                ->setLastModificationDate($project->updated_at)
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                ->setPriority(0.8)
-        );
-    }
-
-    return response($sitemap->render(), 200, [
-        'Content-Type' => 'application/xml; charset=utf-8',
-        'Cache-Control' => 'public, max-age=3600',
-        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
-    ]);
-})->middleware('disable-livewire-scripts')->name('sitemap');
-
-// Jika ingin menggunakan sitemap index untuk multiple sitemaps
-Route::get('/sitemap-index.xml', function () {
-    $sitemapIndex = \Spatie\Sitemap\SitemapIndex::create();
-
-    $sitemapIndex->add(url('/sitemap.xml'));
-    $sitemapIndex->add(url('/sitemap-externals.xml'));
-
-    return response($sitemapIndex->render(), 200, [
-        'Content-Type' => 'application/xml; charset=utf-8',
-        'Cache-Control' => 'public, max-age=3600',
-        'X-Robots-Tag' => 'index, follow', // ✅ Optional, tapi aman
-    ]);
-})->middleware('disable-livewire-scripts')->name('sitemap.index');
