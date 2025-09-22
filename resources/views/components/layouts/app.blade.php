@@ -27,7 +27,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/gradient.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/new-skin/new-skin.css') }}" />
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1009336029518791"
+    crossorigin="anonymous"></script>
 	@stack('styles')
 </head>
 
